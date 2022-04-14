@@ -81,7 +81,8 @@ li {
   margin-top: 3rem;
 }
 
-.button-start {
+.button-start,
+.leaderboard-submit {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,14 +90,14 @@ li {
   background-color: red;
   border: none;
   width: 150px;
-  height: 50px;
+  height: 33px;
   font-size: larger;
   margin-left: auto;
   margin-right: auto;
   border-radius: 25px;
 }
 
-.button-start:hover {
+button:hover {
   cursor: pointer;
 }
 
@@ -105,4 +106,20 @@ li {
   display: flex;
   font-size: larger;
   font-weight: bold;
+}
+
+.win {
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  z-index: 9;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: whitesmoke;
+  gap: 1rem;
 }
