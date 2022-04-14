@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Level = ({ img, coordsStart, coordsEnd }) => {
 	const [startGame, setStartGame] = useState(false);
 	const [win, setWin] = useState(false);
 	const [running, setRunning] = useState(false);
 	const [time, setTime] = useState(0);
+	const [name, setName] = useState();
 
 	useEffect(() => {
 		let interval = null;
@@ -25,12 +27,13 @@ const Level = ({ img, coordsStart, coordsEnd }) => {
 		const x = e.nativeEvent.offsetX;
 		const y = e.nativeEvent.offsetY;
 		if (
-			x > coordsStart[0] &&
-			x < coordsStart[1] &&
-			y > coordsEnd[0] &&
-			y < coordsEnd[1]
+			x >= coordsStart[0] &&
+			x <= coordsStart[1] &&
+			y >= coordsEnd[0] &&
+			y <= coordsEnd[1]
 		) {
-			console.log('you win');
+			setRunning(false);
+			setWin(true);
 		}
 	};
 
@@ -38,6 +41,19 @@ const Level = ({ img, coordsStart, coordsEnd }) => {
 		e.preventDefault();
 		setRunning(true);
 		setStartGame(true);
+	};
+
+	const nameHandler = (e) => {
+		setName(e.target.value);
+	};
+
+	const onSubmit = (e) => {
+		console.log(name);
+		const navLinks = document.querySelectorAll('li');
+		navLinks.forEach((link) => {
+			link.style.backgroundColor = '#29a0f521';
+		});
+		navLinks[3].style.backgroundColor = '#123f5f21';
 	};
 	return (
 		<div className="waldo-img-wrapper">
@@ -52,11 +68,25 @@ const Level = ({ img, coordsStart, coordsEnd }) => {
 					<img src={img} alt="Where's Waldo" onClick={pictureHandler} />
 					{win ? (
 						<div className="win">
-							<form>
+							<form action="/leaderboard">
 								<label htmlFor="name">
 									Enter your name to be put onto the leaderboard!
 								</label>
-								<input id="name" name="name" type="text" />
+								<input
+									id="name"
+									name="name"
+									type="text"
+									onChange={(e) => nameHandler(e)}
+								/>
+								<Link to="/leaderboard">
+									<button
+										type="button"
+										className="leaderboard-submit"
+										onClick={(e) => onSubmit(e)}
+									>
+										Submit
+									</button>
+								</Link>
 							</form>
 						</div>
 					) : null}
