@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Level from './components/Level';
+import Header from './components/Header';
+import level1 from './images/waldo1.png';
+import level2 from './images/waldo2.jpeg';
+import level3 from './images/waldo3.jpeg';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	return (
+		<BrowserRouter>
+			<Header />
+			<Routes>
+				<Route path="/" element={<Level img={level1} />} />
+				<Route path="/level2" element={<Level img={level2} />} />
+				<Route path="/level3" element={<Level img={level3} />} />
+			</Routes>
+		</BrowserRouter>
+	);
+};
 
 export default App;
