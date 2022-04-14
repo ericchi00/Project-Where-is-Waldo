@@ -10,12 +10,14 @@ body {
 header {
   align-items: center;
   padding: 1rem;
+  background-color: #29a0f521;
 }
 
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
 }
 
 header p {
@@ -35,6 +37,8 @@ nav {
 
 nav li {
   color: black;
+  font-size: larger;
+  font-weight: 600;
 }
 
 a:link,
@@ -58,4 +62,31 @@ li {
   height: 768px;
   width: 1368px;
   padding-bottom: 2rem;
+}
+
+.start-game {
+  width: 500px;
+  height: auto;
+  padding: 1rem;
+  background-color: #f6f7fa;
+  margin-top: 3rem;
+}
+
+.button-start {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: red;
+  border: none;
+  width: 150px;
+  height: 50px;
+  font-size: larger;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 25px;
+}
+
+.button-start:hover {
+  cursor: pointer;
 }
