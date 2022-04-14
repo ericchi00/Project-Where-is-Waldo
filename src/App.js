@@ -10,9 +10,39 @@ const App = () => {
 		<BrowserRouter>
 			<Header />
 			<Routes>
-				<Route path="/" element={<Level img={level1} />} />
-				<Route path="/level2" element={<Level img={level2} />} />
-				<Route path="/level3" element={<Level img={level3} />} />
+				<Route
+					path="/"
+					element={
+						<Level
+							img={level1}
+							key="1"
+							coordsStart={[210, 270]}
+							coordsEnd={[150, 195]}
+						/>
+					}
+				/>
+				<Route
+					path="/level2"
+					element={
+						<Level
+							img={level2}
+							key="2"
+							coordsStart={[925, 960]}
+							coordsEnd={[265, 290]}
+						/>
+					}
+				/>
+				<Route
+					path="/level3"
+					element={
+						<Level
+							img={level3}
+							key="3"
+							coordsStart={[1140, 1180]}
+							coordsEnd={[215, 260]}
+						/>
+					}
+				/>
 			</Routes>
 		</BrowserRouter>
 	);
