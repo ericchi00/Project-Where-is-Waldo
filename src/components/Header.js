@@ -3,6 +3,15 @@ import headerLogo from '../images/headerwaldo.png';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
+	// sets which level/page is currently active
+	const setActive = (id) => {
+		const navLinks = document.querySelectorAll('li');
+		navLinks.forEach((link) => {
+			link.style.backgroundColor = '#29a0f521';
+		});
+		navLinks[id].style.backgroundColor = '#123f5f21';
+	};
+
 	return (
 		<header>
 			<div className="header">
@@ -11,16 +20,24 @@ const Header = () => {
 			</div>
 			<nav>
 				<Link to="/">
-					<li>Level 1</li>
+					<li id="level1" onClick={() => setActive(0)}>
+						Level 1
+					</li>
 				</Link>
 				<Link to="/level2">
-					<li>Level 2</li>
+					<li id="level2" onClick={() => setActive(1)}>
+						Level 2
+					</li>
 				</Link>
 				<Link to="/level3">
-					<li>Level 3</li>
+					<li id="level3" onClick={() => setActive(2)}>
+						Level 3
+					</li>
 				</Link>
 				<Link to="/leaderboard">
-					<li>Leaderboard</li>
+					<li id="leaderboard" onClick={() => setActive(3)}>
+						Leaderboard
+					</li>
 				</Link>
 			</nav>
 		</header>
