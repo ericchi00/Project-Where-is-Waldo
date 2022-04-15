@@ -1,7 +1,13 @@
+import {
+	addDoc,
+	collection,
+	getFirestore,
+	serverTimestamp,
+} from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Level = ({ img, coordsStart, coordsEnd }) => {
+const Level = ({ img, coordsStart, coordsEnd, title }) => {
 	const [startGame, setStartGame] = useState(false);
 	const [win, setWin] = useState(false);
 	const [running, setRunning] = useState(false);
@@ -48,17 +54,29 @@ const Level = ({ img, coordsStart, coordsEnd }) => {
 	};
 
 	const onSubmit = (e) => {
-		console.log(name);
+		saveScore(time, name);
 		const navLinks = document.querySelectorAll('li');
 		navLinks.forEach((link) => {
 			link.style.backgroundColor = '#29a0f521';
 		});
 		navLinks[3].style.backgroundColor = '#123f5f21';
 	};
+
+	async function saveScore(time, name) {
+		try {
+			console.log(name);
+			await addDoc(collection(getFirestore(), title), {
+				name: name,
+				time: time,
+				timestamp: serverTimestamp(),
+			});
+		} catch (error) {
+			console.error('error writing name to firebase database', error);
+		}
+	}
 	return (
 		<div className="waldo-img-wrapper">
 			<div className="timer">
-				<span>{('0' + Math.floor((time / 3600000) % 60)).slice(-2)}:</span>
 				<span>{('0' + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
 				<span>{('0' + Math.floor((time / 1000) % 60)).slice(-2)}</span>
 				{/* <span>{('0' + ((time / 10) % 100)).slice(-2)}</span> */}
@@ -69,6 +87,16 @@ const Level = ({ img, coordsStart, coordsEnd }) => {
 					{win ? (
 						<div className="win">
 							<form action="/leaderboard">
+								<div className="win-timer">
+									<span>
+										{('0' + Math.floor((time / 60000) % 60)).slice(-2)}:
+									</span>
+									<span>
+										{('0' + Math.floor((time / 1000) % 60)).slice(-2)}:
+									</span>
+									<span>{('0' + ((time / 10) % 100)).slice(-2)}</span>
+								</div>
+								<div className="MM_SS_MS">(mm:ss:ms)</div>
 								<label htmlFor="name">
 									Enter your name to be put onto the leaderboard!
 								</label>
@@ -78,7 +106,7 @@ const Level = ({ img, coordsStart, coordsEnd }) => {
 									type="text"
 									onChange={(e) => nameHandler(e)}
 								/>
-								<Link to="/leaderboard">
+								<Link to="/leaderboard/">
 									<button
 										type="button"
 										className="leaderboard-submit"
