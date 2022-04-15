@@ -4,6 +4,7 @@ import Header from './components/Header';
 import level1 from './images/waldo1.png';
 import level2 from './images/waldo2.jpeg';
 import level3 from './images/waldo3.jpeg';
+import Leaderboard from './components/Leaderboard';
 
 const App = () => {
 	return (
@@ -18,6 +19,7 @@ const App = () => {
 							key="1"
 							coordsStart={[210, 270]}
 							coordsEnd={[150, 195]}
+							title="Waldo 1"
 						/>
 					}
 				/>
@@ -29,6 +31,7 @@ const App = () => {
 							key="2"
 							coordsStart={[925, 960]}
 							coordsEnd={[265, 290]}
+							title="Waldo 2"
 						/>
 					}
 				/>
@@ -40,9 +43,11 @@ const App = () => {
 							key="3"
 							coordsStart={[1140, 1180]}
 							coordsEnd={[215, 260]}
+							title="Waldo 3"
 						/>
 					}
 				/>
+				<Route path="/leaderboard" element={<Leaderboard />} />
 			</Routes>
 		</BrowserRouter>
 	);
