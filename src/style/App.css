@@ -79,7 +79,12 @@ li {
   padding: 1rem;
   background-color: #f6f7fa;
   margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
 
 .button-start,
 .leaderboard-submit {
@@ -92,8 +97,6 @@ li {
   width: 150px;
   height: 33px;
   font-size: larger;
-  margin-left: auto;
-  margin-right: auto;
   border-radius: 25px;
 }
 
@@ -110,7 +113,6 @@ button:hover {
 
 .win {
   position: absolute;
-  justify-content: center;
   align-items: center;
   z-index: 9;
   background-color: rgba(0, 0, 0, 0.5);
@@ -119,7 +121,20 @@ button:hover {
 form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 2rem;
   background-color: whitesmoke;
   gap: 1rem;
+}
+
+.win-timer {
+  display: flex;
+  justify-content: center;
+  font-size: larger;
+}
+
+.MM_SS_MS {
+  display: flex;
+  justify-content: center;
 }
