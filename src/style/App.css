@@ -1,5 +1,9 @@
-body {
+* {
   margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -137,4 +141,23 @@ form {
 .MM_SS_MS {
   display: flex;
   justify-content: center;
+}
+
+.leaderboard {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1rem;
+  border: 1px black solid;
+  text-align: center;
+}
+
+.leaderboard ul {
+  padding: 1rem;
+}
+
+.leaderboard ul li {
+  display: flex;
+  justify-content: space-between;
+  gap: 5rem;
+  padding: 1rem;
 }
